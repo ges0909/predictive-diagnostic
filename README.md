@@ -18,8 +18,21 @@ Anforderung
 
 ## Normality Descriptor
 
-* Anzahl Records im Jahr bei 1 Mill. Records/s: **31,54 Billionen/Jahr** (31.536.000.000.000)
-* => in Lernphase um Faktor 100 schneller
+* DFT = Diskrete Fouriertransformation, FFT = Schnelle Fouriertransformation
+* Metrik: "_for example, the sum of how many log entries have a certain level, per second, for all nodes_"
+* Mehrere Metriken ermitteln, zum Bsp. für jedes Log-Leve. Diese sind unabhängig voneinander.
+* Input: Anzahl Records/Jahr bei 1 Mill. Records/s: **31,54 Billionen/Jahr** (31.536.000.000.000)
+* Output:
+  * Anzahl _Errors_ pro Sekunde
+  * für
+* Segmentierung der Datenmenge:
+  * Output für größere Zeitabschnitte zusammenfasssen, zum Beispiel _Errors_ für drei Stunden: 8 Werte/Tag
+  * Output wieder einer DFT unterziehen: 
+
+## Anomalies Recorder
+
+* IDFT = Inverse Diskrete Fouriertransformation, IFFT = schnelle Inverse Diskrete Fouriertransformation
+* 
 
 | Name                | Last update | Link                                                                                     |
 | :------------------ | :---------- | :--------------------------------------------------------------------------------------- |
