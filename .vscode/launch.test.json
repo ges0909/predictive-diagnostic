@@ -1,0 +1,30 @@
+{
+    "run": {
+        "default": "",
+        "items": [
+            {
+                "name": "predictive-diagnostic",
+                "projectName": "predictive-diagnostic",
+                "workingDirectory": "c:\\Users\\Gerrit\\Projekte\\predictive-diagnostic",
+                "args": [],
+                "vmargs": [],
+                "env": {},
+                "preLaunchTask": ""
+            }
+        ]
+    },
+    "debug": {
+        "default": "",
+        "items": [
+            {
+                "name": "predictive-diagnostic",
+                "projectName": "predictive-diagnostic",
+                "workingDirectory": "c:\\Users\\Gerrit\\Projekte\\predictive-diagnostic",
+                "args": [],
+                "vmargs": [],
+                "env": {},
+                "preLaunchTask": ""
+            }
+        ]
+    }
+}

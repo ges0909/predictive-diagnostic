@@ -1,0 +1,19 @@
+.vscode/settings.json
+
+.project
+.settings
+.classpath
+/bin/
+/out/
+
+.gradle
+gradlew*
+/build/
+
+# avoid ignoring Gradle wrapper jar file (.jar files are usually ignored)
+!gradle-wrapper.jar
+
+/.idea/
+
+src/test/resources/test-100_000.log
+src/test/resources/test-1_000_000.log
