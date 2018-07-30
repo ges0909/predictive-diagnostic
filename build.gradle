@@ -1,23 +1,25 @@
 plugins {
-    id 'me.champeau.gradle.jmh' version '0.4.7'
     id 'io.franzbecker.gradle-lombok' version '1.14'
 }
 
 apply plugin: 'java'
 apply plugin: 'application'
 apply plugin: 'eclipse'
-apply plugin: 'me.champeau.gradle.jmh'
 apply plugin: 'io.franzbecker.gradle-lombok'
+
+sourceCompatibility = 1.9
+targetCompatibility = 1.9
+
+mainClassName = 'de.infinit.forge.BenchmarkRunner'
 
 lombok {
 	version = '1.18.2'
 	sha256 = ""
 }
 
-sourceCompatibility = 1.9
-targetCompatibility = 1.9
-
-mainClassName = 'de.infinit.forge.BenchmarkRunner'
+sourceSets {
+    jmh
+}
 
 dependencies {
     compile group: 'org.apache.commons', name: 'commons-math3', version: '3.6.1'
@@ -27,16 +29,23 @@ dependencies {
     // testCompile group: 'org.junit.platform', name: 'junit-platform-console',  version: '1.2.0'
     // testCompile group: 'org.junit.platform', name: 'junit-platform-launcher', version: '1.2.0'
 
-    compile group: 'org.openjdk.jmh', name: 'jmh-core', version: '1.21'
-    compile group: 'org.openjdk.jmh', name: 'jmh-generator-annprocess', version: '1.21'
+    jmhCompile project
+    jmhCompile group: 'org.openjdk.jmh', name: 'jmh-core', version: '1.21'
+    jmhCompile group: 'org.openjdk.jmh', name: 'jmh-generator-annprocess', version: '1.21'
 }
 
 repositories {
     jcenter()
 }
 
-jmh {
-    humanOutputFile = null
-    warmupIterations = 1
-    iterations = 1
+eclipse {
+   classpath {
+       plusConfigurations.add(configurations.jmhCompile)
+       defaultOutputDir = file('build/classes-jmh-ide')
+   }
+}
+
+task jmh(type: JavaExec, description: 'Executing JMH benchmarks') {
+   classpath = sourceSets.jmh.runtimeClasspath
+   main = 'org.openjdk.jmh.Main'
 }
