@@ -18,7 +18,10 @@ lombok {
 }
 
 sourceSets {
-    jmh
+   jmh {
+       compileClasspath += sourceSets.test.runtimeClasspath
+       runtimeClasspath += sourceSets.test.runtimeClasspath
+   }
 }
 
 dependencies {

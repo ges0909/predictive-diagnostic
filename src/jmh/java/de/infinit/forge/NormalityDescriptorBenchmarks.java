@@ -1,8 +1,5 @@
 package de.infinit.forge;
 
-import java.security.SecureRandom;
-import java.util.Random;
-import java.util.concurrent.ThreadLocalRandom;
 import java.util.concurrent.TimeUnit;
 
 import org.openjdk.jmh.annotations.Benchmark;
@@ -25,21 +22,9 @@ import org.openjdk.jmh.annotations.Warmup;
 @Threads(1)
 public class NormalityDescriptorBenchmarks {
 
-  private final Random random = new Random();
-  private final SecureRandom secureRandom = new SecureRandom();
-
   @Benchmark
-  public void measureRandom() {
-    random.nextInt();
-  }
-
-  @Benchmark
-  public void measureSecureRandom() {
-    secureRandom.nextInt();
-  }
-
-  @Benchmark
-  public void measureThreadLocal() {
-    ThreadLocalRandom.current().nextInt();
+  public void testGetSamplesFromResourceFile() {
+    NormalityDescriptorTest ndt = new NormalityDescriptorTest();
+    ndt.ffmAndIffmTest();
   }
 }
